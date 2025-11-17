@@ -6,6 +6,31 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Свадьба — Азиз & Саламят</title>
+        <!-- SEO -->
+        <meta
+            name="description"
+            content="Свадебное пригласительное Азиз & Саламят — 11 января 2026. Будем рады видеть вас на нашем торжестве." />
+
+        <!-- OpenGraph -->
+        <meta
+            property="og:title"
+            content="Свадебное пригласительное — Aziz & Salamyat" />
+        <meta
+            property="og:description"
+            content="Приглашаем вас на нашу свадьбу. 11 января 2026. Место, время и детали внутри." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://example.com" />
+        <meta property="og:image" content="https://example.com/og-image.jpg" />
+
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+            name="twitter:title"
+            content="Свадебное пригласительное — Aziz & Salamyat" />
+        <meta
+            name="twitter:description"
+            content="Приглашаем вас на нашу свадьбу. 11 января 2026. Все детали внутри." />
+        <meta name="twitter:image" content="https://example.com/og-image.jpg" />
 
         <!-- Шрифты -->
         <link
@@ -301,9 +326,9 @@
                 content: "♡";
                 position: absolute;
                 left: 50%;
-                top: -10px;
+                top: -15px;
                 transform: translateX(-50%);
-                font-size: 35px;
+                font-size: 45px;
                 color: #000;
             }
             /* ===== АДАПТИВНЫЕ КАРТИНКИ ===== */
@@ -381,28 +406,82 @@
                 letter-spacing: 1px !important;
             }
 
-            /* ===== КНОПКА ДЛЯ МУЗЫКИ ===== */
-            .music-btn {
-                margin-top: 22px;
-                padding: 10px 22px;
-                background: rgba(255, 255, 255, 0.25);
-                border: 1px solid rgba(255, 255, 255, 0.4);
-                border-radius: 30px;
-                color: #fff;
-                font-size: 16px;
-                backdrop-filter: blur(5px);
+            /* ===== WEDDING MUSIC PLAYER ===== */
+            .music-player {
+                margin-top: 40px;
+                text-align: center;
+            }
+
+            /* линия */
+            .player-line {
+                width: 260px;
+                height: 2px;
+                background: rgba(255, 255, 255, 0.6);
+                margin: 0 auto 20px;
+                position: relative;
+            }
+
+            .player-progress {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 2px;
+                width: 0%;
+                background: #fff;
+            }
+
+            /* кнопки под линией */
+            .player-controls {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 26px;
+                margin-bottom: 14px;
+            }
+
+            .player-btn {
+                color: white;
+                font-size: 20px;
+                opacity: 0.45;
+            }
+
+            .player-btn.disabled {
+                pointer-events: none;
+            }
+
+            /* сердечко */
+            .player-heart {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                background: white;
+                border: none;
                 cursor: pointer;
-                transition: 0.3s ease;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: 0.3s;
             }
 
-            .music-btn:hover {
-                background: rgba(255, 255, 255, 0.35);
-            }
-
-            .music-btn.playing {
-                background: rgba(255, 255, 255, 0.55);
+            #heartIcon {
+                font-size: 28px;
                 color: #000;
-                font-weight: 600;
+                transition: 0.3s;
+            }
+
+            .player-heart.playing {
+                background: #000;
+            }
+
+            .player-heart.playing #heartIcon {
+                color: #fff;
+            }
+
+            /* текст под плеером */
+            .player-hint {
+                font-size: 14px;
+                color: rgba(255, 255, 255, 0.85);
+                line-height: 1.4;
             }
         </style>
     </head>
@@ -415,11 +494,29 @@
             <div class="hero-content">
                 <div class="hero-title">Свадьба</div>
                 <div class="hero-names">Азиз & Саламят</div>
-                <div class="hero-date">26 / 01 / 2026</div>
+                <div class="hero-date">11 / 01 / 2026</div>
 
                 <!-- КНОПКА МУЗЫКИ -->
 
-                <button id="musicBtn" class="music-btn">▶ Музыка</button>
+                <div class="music-player">
+                    <div class="player-line">
+                        <div class="player-progress" id="playerProgress"></div>
+                    </div>
+
+                    <div class="player-controls">
+                        <span class="player-btn disabled">⟨⟨</span>
+
+                        <button class="player-heart" id="heartBtn">
+                            <span id="heartIcon">♡</span>
+                        </button>
+
+                        <span class="player-btn disabled">⟩⟩</span>
+                    </div>
+
+                    <div class="player-hint">
+                        нажмите на сердце,<br />чтобы включить музыку
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -475,6 +572,7 @@
 
                     <div></div>
                     <div></div>
+                    <div></div>
                     <div>1</div>
                     <div>2</div>
                     <div>3</div>
@@ -485,7 +583,7 @@
                     <div>8</div>
                     <div>9</div>
                     <div>10</div>
-                    <div>11</div>
+                    <div class="heart">11</div>
                     <div>12</div>
                     <div>13</div>
                     <div>14</div>
@@ -500,12 +598,13 @@
                     <div>23</div>
                     <div>24</div>
                     <div>25</div>
-                    <div class="heart">26</div>
+                    <div>26</div>
                     <div>27</div>
                     <div>28</div>
                     <div>29</div>
                     <div>30</div>
                     <div>31</div>
+                    <div></div>
                 </div>
             </div>
         </section>
@@ -564,7 +663,7 @@
 
         <script>
             // ========== COUNTDOWN ==========
-            const target = new Date("2026-01-26T17:00:00").getTime();
+            const target = new Date("2026-01-11T17:00:00").getTime();
 
             function tick() {
                 const now = Date.now();
@@ -603,23 +702,31 @@
                 });
             });
 
-            // === МУЗЫКА ===
+            // === ПРОИГРЫВАНИЕ МУЗЫКИ С СЕРДЦЕМ ===
             const audio = document.getElementById("weddingAudio");
-            const musicBtn = document.getElementById("musicBtn");
+            const heartBtn = document.getElementById("heartBtn");
+            const heartIcon = document.getElementById("heartIcon");
+            const progress = document.getElementById("playerProgress");
 
             let isPlaying = false;
 
-            musicBtn.addEventListener("click", () => {
+            heartBtn.addEventListener("click", () => {
                 if (!isPlaying) {
                     audio.play();
-                    musicBtn.classList.add("playing");
-                    musicBtn.textContent = "⏸ Пауза";
+                    heartBtn.classList.add("playing");
+                    heartIcon.textContent = "❤";
                 } else {
                     audio.pause();
-                    musicBtn.classList.remove("playing");
-                    musicBtn.textContent = "▶ Музыка";
+                    heartBtn.classList.remove("playing");
+                    heartIcon.textContent = "♡";
                 }
                 isPlaying = !isPlaying;
+            });
+
+            // обновление прогресс-бара
+            audio.addEventListener("timeupdate", () => {
+                const percent = (audio.currentTime / audio.duration) * 100;
+                progress.style.width = percent + "%";
             });
         </script>
     </body>
