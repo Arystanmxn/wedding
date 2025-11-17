@@ -100,7 +100,6 @@
             }
 
             .hero-title {
-                font-family: "Playfair Display", serif;
                 font-size: 52px;
                 margin-bottom: 6px;
             }
@@ -125,7 +124,6 @@
             }
 
             .invite-block h2 {
-                font-family: "Playfair Display", serif;
                 font-size: 34px;
                 margin-bottom: 12px;
             }
@@ -147,7 +145,6 @@
             }
 
             .calendar-block h2 {
-                font-family: "Playfair Display", serif;
                 font-size: 32px;
                 margin-bottom: 8px;
             }
@@ -180,7 +177,6 @@
             }
 
             .location-block h2 {
-                font-family: "Playfair Display", serif;
                 font-size: 32px;
             }
 
@@ -201,7 +197,6 @@
             }
 
             .countdown-title {
-                font-family: "Playfair Display", serif;
                 font-size: 30px;
                 margin-bottom: 26px;
             }
@@ -236,7 +231,6 @@
                 font-size: 26px;
                 font-weight: 500;
                 color: var(--accent-dark);
-                font-family: "Playfair Display", serif;
                 margin-top: 20px;
             }
 
@@ -246,9 +240,8 @@
             }
 
             .big-date-header {
-                font-family: "Playfair Display", serif;
                 font-size: 26px;
-                margin-bottom: 25px;
+                margin-bottom: 18px;
             }
 
             .big-date-row {
@@ -283,7 +276,6 @@
 
             .day-number {
                 font-size: 72px;
-                font-family: "Playfair Display", serif;
                 line-height: 1;
             }
 
@@ -293,7 +285,6 @@
             }
 
             .month-title {
-                font-family: "Playfair Display", serif;
                 font-size: 24px;
                 margin-bottom: 16px;
                 margin-top: 20px;
@@ -469,12 +460,14 @@
                 transition: 0.3s;
             }
 
+            /* При воспроизведении только сердце черное */
             .player-heart.playing {
-                background: #000;
+                background: #fff; /* фоновый цвет НЕ меняем */
             }
 
             .player-heart.playing #heartIcon {
-                color: #fff;
+                color: #000; /* сердце становится черным */
+                font-weight: 700;
             }
 
             /* текст под плеером */
@@ -714,11 +707,11 @@
                 if (!isPlaying) {
                     audio.play();
                     heartBtn.classList.add("playing");
-                    heartIcon.textContent = "❤";
+                    heartIcon.textContent = "♥"; // черное сердце
                 } else {
                     audio.pause();
                     heartBtn.classList.remove("playing");
-                    heartIcon.textContent = "♡";
+                    heartIcon.textContent = "♡"; // пустое сердце
                 }
                 isPlaying = !isPlaying;
             });
