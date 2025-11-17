@@ -78,7 +78,7 @@
             /* ===== HERO ===== */
             .hero {
                 height: 100vh;
-                background-image: url("./assets/imgs/hero-image.JPG");
+                background-image: url("../assets/imgs/hero-image.JPG");
                 background-size: cover;
                 background-position: center;
                 position: relative;
@@ -513,7 +513,7 @@
             }
         </style>
     </head>
-    <audio id="weddingAudio" src="./assets/music/wedding-music.mp3"></audio>
+    <audio id="weddingAudio" src="../assets/music/wedding-music.mp3"></audio>
 
     <body>
         <!-- 1. HERO -->
@@ -555,12 +555,12 @@
 
                 <div class="subtext">
                     Счастье приходит в момент, когда делишь его с близкими. Мы
-                    рады пригласить вас на свадебное торжество наших детей.
+                    рады пригласить вас на свадебное торжество.
                 </div>
             </div>
         </section>
 
-        <img src="./assets/imgs/love-image.svg" alt="love-image" />
+        <img src="../assets/imgs/love-image.svg" alt="love-image" />
         <!-- 3. Новый календарный блок -->
         <section class="reveal-item">
             <div class="container calendar-block-custom">
@@ -580,7 +580,7 @@
 
                     <div class="big-date-side">
                         <span class="line"></span>
-                        <span class="label">13:00</span>
+                        <span class="label">18:00</span>
                         <span class="line"></span>
                     </div>
                 </div>
@@ -647,7 +647,7 @@
                     class="map-icon"
                     href="https://2gis.kz/almaty/firm/70000001041104821?m=76.81892%2C43.221077%2F16.1%2Fr%2F5.52"
                     target="_blank">
-                    <img src="./assets/imgs/2gis.png" alt="2GIS" />
+                    <img src="../assets/imgs/2gis.png" alt="2GIS" />
                 </a>
             </div>
         </section>
@@ -681,13 +681,15 @@
         <!-- 6. Финальное сообщение -->
         <section class="reveal-item">
             <div class="container">
-                <img src="./assets/imgs/footer-image.webp" alt="footer-image" />
+                <img
+                    src="../assets/imgs/footer-image.webp"
+                    alt="footer-image" />
             </div>
         </section>
 
         <script>
             // ========== COUNTDOWN ==========
-            const target = new Date("2026-01-11T13:00:00").getTime();
+            const target = new Date("2026-01-11T18:00:00").getTime();
 
             function tick() {
                 const now = Date.now();
