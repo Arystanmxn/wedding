@@ -476,6 +476,19 @@
                 color: rgba(255, 255, 255, 0.85);
                 line-height: 1.4;
             }
+
+            /* ==== SCROLL ANIMATIONS ==== */
+
+            .reveal-item {
+                opacity: 0;
+                transform: translateY(30px);
+                transition: 0.9s ease;
+            }
+
+            .reveal-item.reveal {
+                opacity: 1;
+                transform: translateY(0);
+            }
         </style>
     </head>
     <audio id="weddingAudio" src="./assets/music/wedding-music.mp3"></audio>
@@ -514,7 +527,7 @@
         </section>
 
         <!-- 2. Дорогие гости -->
-        <section>
+        <section class="reveal-item">
             <div class="container invite-block">
                 <h2 class="wedding-font">Дорогие гости</h2>
 
@@ -527,7 +540,7 @@
 
         <img src="./assets/imgs/love-image.svg" alt="love-image" />
         <!-- 3. Новый календарный блок -->
-        <section>
+        <section class="reveal-item">
             <div class="container calendar-block-custom">
                 <div class="big-date-header">январь</div>
 
@@ -601,7 +614,7 @@
         </section>
 
         <!-- 4. Местоположение -->
-        <section>
+        <section class="reveal-item">
             <div class="container location-block">
                 <h2>Местоположение</h2>
                 <div class="location-address">
@@ -618,7 +631,7 @@
         </section>
 
         <!-- 5. До свадьбы осталось -->
-        <section>
+        <section class="reveal-item">
             <div class="container countdown-wrapper">
                 <div class="countdown-title">До свадьбы осталось</div>
 
@@ -644,7 +657,7 @@
         </section>
 
         <!-- 6. Финальное сообщение -->
-        <section>
+        <section class="reveal-item">
             <div class="container">
                 <img src="./assets/imgs/footer-image.webp" alt="footer-image" />
             </div>
@@ -697,6 +710,8 @@
             const heartIcon = document.getElementById("heartIcon");
             const progress = document.getElementById("playerProgress");
 
+            audio.loop = true; // <-- ВАЖНО: зацикливаем воспроизведение
+
             let isPlaying = false;
 
             heartBtn.addEventListener("click", () => {
@@ -717,6 +732,23 @@
                 const percent = (audio.currentTime / audio.duration) * 100;
                 progress.style.width = percent + "%";
             });
+
+            // SCROLL REVEAL ANIMATIONS
+            const revealItems = document.querySelectorAll(".reveal-item");
+
+            const observer = new IntersectionObserver(
+                (entries, obs) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("reveal");
+                            obs.unobserve(entry.target); // анимация только один раз
+                        }
+                    });
+                },
+                { threshold: 0.1 }
+            );
+
+            revealItems.forEach((item) => observer.observe(item));
         </script>
     </body>
 </html>
