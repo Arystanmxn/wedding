@@ -1,0 +1,994 @@
+<!-- @format -->
+
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Қыз Узуату — Диана</title>
+        <!-- SEO -->
+        <meta
+            name="description"
+            content="Қыз Узуату — Диана — 11 января 2026. Будем рады видеть вас на нашем торжестве." />
+
+        <!-- OpenGraph -->
+        <meta
+            property="og:title"
+            content="Қыз Узуату — Диана" />
+        <meta
+            property="og:description"
+            content="Қыз Узуату — Диана — 11 января 2026. Место, время и детали внутри." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://example.com" />
+        <meta property="og:image" content="https://example.com/og-image.jpg" />
+
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+            name="twitter:title"
+            content="Қыз Узуату — Диана" />
+        <meta
+            name="twitter:description"
+            content="Қыз Узуату — Диана — 11 января 2026. Все детали внутри." />
+        <meta name="twitter:image" content="https://example.com/og-image.jpg" />
+
+        <!-- Шрифты -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Great+Vibes&display=swap"
+            rel="stylesheet" />
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500&display=swap"
+            rel="stylesheet" />
+
+        <!-- GSAP -->
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+            defer></script>
+
+        <style>
+            /* ===== Базовые переменные ===== */
+            :root {
+                --bg: #faf7f3;
+                --text: #3a3a3a;
+                --accent: #b3936f;
+                --accent-dark: #8b6f4e;
+                --white: #ffffff;
+                --shadow: rgba(0, 0, 0, 0.08);
+                font-family: "Montserrat", sans-serif; /* ЗАМЕНА */
+            }
+
+            body {
+                margin: 0;
+                padding: 0;
+                background: var(--bg);
+                color: var(--text);
+                line-height: 1.5;
+            }
+
+            section {
+                padding: 40px 20px;
+            }
+
+            .container {
+                max-width: 900px;
+                margin: auto;
+            }
+
+            /* ===== HERO ===== */
+            .hero {
+                height: 100vh;
+                background-image: url("./assets/imgs/hero-image.JPG");
+                background-size: cover;
+                background-position: center;
+                position: relative;
+            }
+
+            .hero-overlay {
+                position: absolute;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.45);
+            }
+
+            .hero-content {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+                color: var(--white);
+            }
+
+            .hero-title {
+                font-size: 52px;
+                margin-bottom: 6px;
+            }
+
+            .hero-names {
+                font-size: 30px;
+                margin-bottom: 14px;
+                font-weight: 300;
+            }
+
+            .hero-date {
+                font-size: 22px;
+                border: 1px solid rgba(255, 255, 255, 0.3);
+                display: inline-block;
+                padding: 10px 24px;
+                border-radius: 8px;
+            }
+
+            /* ===== ТЕКСТ ДЛЯ ГОСТЕЙ ===== */
+            .invite-block {
+                text-align: center;
+            }
+
+            .invite-block h2 {
+                font-size: 34px;
+                margin-bottom: 12px;
+            }
+
+            .invite-block .subtext {
+                font-size: 20px;
+                color: #5a5a5a;
+                max-width: 650px;
+                margin: 0 auto 20px;
+            }
+
+            /* ===== КРАСИВЫЙ КАЛЕНДАРЬ ===== */
+            .calendar-block {
+                background: var(--white);
+                border-radius: 16px;
+                padding: 40px;
+                box-shadow: 0 6px 20px var(--shadow);
+                text-align: center;
+            }
+
+            .calendar-block h2 {
+                font-size: 32px;
+                margin-bottom: 8px;
+            }
+
+            .calendar-date {
+                font-size: 22px;
+                margin-bottom: 30px;
+            }
+
+            .calendar {
+                display: flex;
+                justify-content: center;
+                gap: 6px;
+            }
+
+            .calendar div {
+                width: 50px;
+                height: 50px;
+                border-radius: 8px;
+                border: 1px solid var(--accent);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 500;
+            }
+
+            /* ===== БЛОК "Место проведения" ===== */
+
+            .custom-location {
+                text-align: center;
+                margin-top: 20px;
+            }
+
+            .location-title {
+                font-size: 28px;
+                font-weight: 500;
+                margin-bottom: 20px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+
+            .location-restaurant {
+                font-size: 22px;
+                margin-bottom: 6px;
+                color: #555;
+            }
+
+            .location-restaurant-name {
+                font-size: 28px;
+                font-weight: 500;
+                margin-bottom: 20px;
+            }
+
+            .location-address-detail {
+                font-size: 20px;
+                line-height: 1.45;
+                color: #444;
+                margin-bottom: 30px;
+            }
+
+            /* ===== ОБРАТНЫЙ ОТСЧЁТ ===== */
+            .countdown-wrapper {
+                text-align: center;
+            }
+
+            .countdown-title {
+                font-size: 30px;
+                margin-bottom: 26px;
+            }
+
+            .countdown {
+                display: flex;
+                justify-content: center;
+                gap: 18px;
+            }
+
+            .countdown-box {
+                background: var(--white);
+                width: 90px;
+                padding: 14px;
+                border-radius: 10px;
+                box-shadow: 0 6px 20px var(--shadow);
+            }
+
+            .countdown-number {
+                font-size: 26px;
+                font-weight: bold;
+                color: var(--accent-dark);
+            }
+
+            .countdown-label {
+                font-size: 14px;
+            }
+
+            /* ===== ФИНАЛ ===== */
+            .final-text {
+                text-align: center;
+                font-size: 26px;
+                font-weight: 500;
+                color: var(--accent-dark);
+                margin-top: 20px;
+            }
+
+            .calendar-block-custom {
+                text-align: center;
+                padding: 40px 10px;
+            }
+
+            .big-date-header {
+                font-size: 26px;
+                margin-bottom: 10px;
+            }
+
+            .big-date-row {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 35px;
+            }
+
+            .big-date-side {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 33%;
+            }
+
+            .big-date-side .line {
+                width: 100%;
+                height: 1px;
+                background: #000;
+                margin: 4px 0;
+            }
+
+            .big-date-side .label {
+                font-size: 17px;
+                font-family: "Inter";
+            }
+
+            .big-date-center {
+                width: 33%;
+            }
+
+            .day-number {
+                font-size: 72px;
+                line-height: 1;
+            }
+
+            .year {
+                font-size: 20px;
+                margin-top: 5px;
+            }
+
+            .month-title {
+                font-size: 24px;
+                margin-bottom: 16px;
+                margin-top: 20px;
+            }
+
+            .month-title span {
+                font-size: 18px;
+                margin-left: 6px;
+            }
+
+            .calendar-grid {
+                display: grid;
+                grid-template-columns: repeat(7, 1fr);
+                gap: 14px;
+                font-size: 18px;
+                max-width: 360px;
+                margin: 0 auto;
+            }
+
+            .calendar-grid div {
+                text-align: center;
+            }
+
+            .heart {
+                position: relative;
+                font-weight: bold;
+            }
+
+            .heart::after {
+                content: "♡";
+                position: absolute;
+                left: 50%;
+                top: -25px;
+                transform: translateX(-50%);
+                font-size: 50px;
+                color: #741515;
+            }
+            /* ===== АДАПТИВНЫЕ КАРТИНКИ ===== */
+
+            /* Все img — всегда по ширине контейнера */
+            img {
+                max-width: 100%;
+                width: 100%;
+                height: auto;
+                display: block;
+                margin: 20px auto;
+                border-radius: 12px; /* можно убрать, если не нужно */
+            }
+
+            /* При желании можно сделать без отступов */
+            .invite-block img {
+                margin-top: 30px;
+            }
+
+            /* ==== HERO адаптивная настройка ==== */
+            .hero {
+                height: 100vh;
+                min-height: 600px; /* чтобы не было слишком низким на телефонах */
+                background-size: cover;
+                background-position: center center;
+                background-repeat: no-repeat;
+            }
+
+            /* ===== БОЛЕЕ МЯГКАЯ АДАПТАЦИЯ НА МОБИЛКУ ===== */
+            @media (max-width: 768px) {
+                .hero-title {
+                    font-size: 38px;
+                }
+                .hero-names {
+                    font-size: 24px;
+                }
+                .hero-date {
+                    font-size: 18px;
+                    padding: 8px 18px;
+                }
+
+                .day-number {
+                    font-size: 54px;
+                }
+
+                .calendar-grid {
+                    gap: 10px;
+                    font-size: 16px;
+                }
+
+                img {
+                    border-radius: 10px;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .hero {
+                    height: 85vh;
+                }
+                .hero-title {
+                    font-size: 32px;
+                }
+                .hero-names {
+                    font-size: 20px;
+                }
+                .hero-date {
+                    font-size: 16px;
+                    padding: 6px 14px;
+                }
+            }
+
+            /* Каллиграфический свадебный шрифт */
+            .wedding-font {
+                font-family: "Great Vibes", cursive !important;
+                letter-spacing: 1px !important;
+            }
+
+            /* ===== WEDDING MUSIC PLAYER ===== */
+            .music-player {
+                margin-top: 40px;
+                text-align: center;
+            }
+
+            /* линия */
+            .player-line {
+                width: 260px;
+                height: 2px;
+                background: rgba(255, 255, 255, 0.6);
+                margin: 0 auto 20px;
+                position: relative;
+            }
+
+            .player-progress {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 2px;
+                width: 0%;
+                background: #fff;
+            }
+
+            /* кнопки под линией */
+            .player-controls {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 26px;
+                margin-bottom: 14px;
+            }
+
+            .player-btn {
+                color: white;
+                font-size: 20px;
+                opacity: 0.45;
+            }
+
+            .player-btn.disabled {
+                pointer-events: none;
+            }
+
+            /* сердечко */
+            .player-heart {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                background: white;
+                border: none;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: 0.3s;
+            }
+
+            #heartIcon {
+                font-size: 28px;
+                color: #000;
+                transition: 0.3s;
+            }
+
+            /* При воспроизведении только сердце черное */
+            .player-heart.playing {
+                background: #fff; /* фоновый цвет НЕ меняем */
+            }
+
+            .player-heart.playing #heartIcon {
+                color: #000; /* сердце становится черным */
+                font-weight: 700;
+            }
+
+            /* текст под плеером */
+            .player-hint {
+                font-size: 14px;
+                color: rgba(255, 255, 255, 0.85);
+                line-height: 1.4;
+            }
+
+            /* ==== SCROLL ANIMATIONS ==== */
+
+            .reveal-item {
+                opacity: 0;
+                transform: translateY(30px);
+                transition: 0.9s ease;
+            }
+
+            .reveal-item.reveal {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            .map-icon {
+                width: 52px;
+                height: 52px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                background: white;
+                border-radius: 50%;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                padding: 8px;
+                transition: 0.3s ease;
+            }
+
+            .map-icon:hover {
+                transform: scale(1.07);
+                box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
+            }
+
+            .map-icon img {
+                width: 100%;
+                height: 100%;
+            }
+
+            /* ===== Блок "С уважением" ===== */
+
+            .respect-block {
+                text-align: center;
+                margin-top: 40px;
+            }
+
+            .respect-title {
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+
+            .respect-names {
+                font-family: "Great Vibes", cursive;
+                font-size: 42px;
+                line-height: 1.2;
+                margin-bottom: 12px;
+            }
+
+            .respect-names.small {
+                font-size: 38px;
+            }
+
+            .respect-gold-line {
+                width: 90%;
+                height: 22px;
+                margin: 14px auto 0;
+                background: url("../assets/imgs/gold-line.png") center/contain
+                    no-repeat;
+            }
+            /* ===== Подтверждение присутствия ===== */
+            .confirmation-block {
+                background: linear-gradient(
+                    180deg,
+                    rgba(255, 255, 255, 0.9),
+                    rgba(250, 247, 243, 0.95)
+                );
+                border-radius: 14px;
+                padding: 28px;
+                box-shadow: 0 10px 30px rgba(31, 31, 31, 0.06);
+                display: flex;
+                gap: 30px;
+                align-items: center;
+                justify-content: space-between;
+                margin: 28px auto;
+                max-width: 760px;
+                transition:
+                    transform 0.22s ease,
+                    box-shadow 0.22s ease;
+                border: 1px solid rgba(179, 147, 111, 0.12);
+            }
+
+            .confirmation-block:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 18px 40px rgba(31, 31, 31, 0.09);
+            }
+
+            /* Заголовок */
+            .confirmation-block .confirm-title {
+                font-size: 20px;
+                color: var(--accent-dark);
+                margin: 0;
+                padding: 1em 0;
+                line-height: 1.15;
+            }
+
+            /* Подзаголовок / подсказка */
+            .confirmation-block .confirm-sub {
+                font-size: 14px;
+                color: #666;
+                margin-top: 6px;
+            }
+
+            /* Контейнер кнопки */
+            .confirm-actions {
+                display: flex;
+                gap: 30px;
+                align-items: center;
+            }
+
+            /* Основная кнопка */
+            .confirmation-button {
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+                border: none;
+                background: linear-gradient(
+                    90deg,
+                    var(--accent),
+                    var(--accent-dark)
+                );
+                color: white;
+                padding: 12px 16px;
+                border-radius: 10px;
+                font-weight: 600;
+                font-size: 15px;
+                cursor: pointer;
+                box-shadow: 0 6px 18px rgba(139, 111, 78, 0.18);
+                transition:
+                    transform 0.16s ease,
+                    box-shadow 0.16s ease,
+                    opacity 0.16s;
+                text-decoration: none;
+            }
+
+            /* Иконка внутри кнопки (если svg inline) */
+            .confirmation-button svg {
+                width: 18px;
+                height: 18px;
+                display: block;
+                flex: 0 0 18px;
+                margin-top: 1px;
+            }
+
+            /* Hover / active */
+            .confirmation-button:hover {
+                transform: translateY(-3px);
+            }
+            .confirmation-button:active {
+                transform: translateY(-1px);
+                opacity: 0.95;
+            }
+
+            /* Вариант второй — тонкая вторичная кнопка */
+            .confirmation-secondary {
+                background: transparent;
+                border: 1px solid rgba(60, 60, 60, 0.07);
+                color: var(--text);
+                padding: 10px 14px;
+                border-radius: 10px;
+                font-size: 14px;
+            }
+
+            /* Адаптивность */
+            @media (max-width: 720px) {
+                .confirmation-block {
+                    flex-direction: column;
+                    text-align: center;
+                    gap: 30px;
+                }
+                .confirm-actions {
+                    width: 100%;
+                    justify-content: center;
+                }
+            }
+        </style>
+    </head>
+    <audio id="weddingAudio" src="./assets/music/wedding2.mp3"></audio>
+
+    <body>
+        <!-- 1. HERO -->
+        <section class="hero">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <div class="hero-title wedding-font">Қыз Узуату</div>
+                <div class="hero-names">Диана</div>
+                <div class="hero-date">11 / 02 / 2026</div>
+
+                <!-- КНОПКА МУЗЫКИ -->
+
+                <div class="music-player">
+                    <div class="player-line">
+                        <div class="player-progress" id="playerProgress"></div>
+                    </div>
+
+                    <div class="player-controls">
+                        <span class="player-btn disabled">⟨⟨</span>
+
+                        <button class="player-heart" id="heartBtn">
+                            <span id="heartIcon">♡</span>
+                        </button>
+
+                        <span class="player-btn disabled">⟩⟩</span>
+                    </div>
+
+                    <div class="player-hint">
+                        нажмите на сердце,<br />чтобы включить музыку
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Дорогие гости -->
+        <section class="reveal-item">
+            <div class="container invite-block">
+                <h2 class="wedding-font">Дорогие гости</h2>
+
+                <div class="subtext">
+                    Счастье приходит в момент, когда делишь его с близкими. Мы
+                    рады пригласить вас на свадебное торжество наших детей.
+                </div>
+            </div>
+        </section>
+
+        <img src="./assets/imgs/love-image.svg" alt="love-image" />
+        <!-- 3. Новый календарный блок -->
+        <section class="reveal-item">
+            <div class="container calendar-block-custom">
+                <div class="big-date-header">январь</div>
+
+                <div class="big-date-row">
+                    <div class="big-date-side">
+                        <span class="line"></span>
+                        <span class="label">воскресенье</span>
+                        <span class="line"></span>
+                    </div>
+
+                    <div class="big-date-center">
+                        <div class="day-number">11</div>
+                        <div class="year">2026</div>
+                    </div>
+
+                    <div class="big-date-side">
+                        <span class="line"></span>
+                        <span class="label">12:00</span>
+                        <span class="line"></span>
+                    </div>
+                </div>
+
+                <div class="month-title">январь <span>2026</span></div>
+
+                <div class="calendar-grid">
+                    <div>Пн</div>
+                    <div>Вт</div>
+                    <div>Ср</div>
+                    <div>Чт</div>
+                    <div>Пт</div>
+                    <div>Сб</div>
+                    <div>Вс</div>
+
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div>1</div>
+                    <div>2</div>
+                    <div>3</div>
+                    <div>4</div>
+                    <div>5</div>
+                    <div>6</div>
+                    <div>7</div>
+                    <div>8</div>
+                    <div>9</div>
+                    <div>10</div>
+                    <div class="heart">11</div>
+                    <div>12</div>
+                    <div>13</div>
+                    <div>14</div>
+                    <div>15</div>
+                    <div>16</div>
+                    <div>17</div>
+                    <div>18</div>
+                    <div>19</div>
+                    <div>20</div>
+                    <div>21</div>
+                    <div>22</div>
+                    <div>23</div>
+                    <div>24</div>
+                    <div>25</div>
+                    <div>26</div>
+                    <div>27</div>
+                    <div>28</div>
+                    <div>29</div>
+                    <div>30</div>
+                    <div>31</div>
+                    <div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Место проведения -->
+        <section class="reveal-item">
+            <div class="container location-block custom-location">
+                <h2 class="location-title">МЕСТО ПРОВЕДЕНИЯ:</h2>
+
+                <div class="location-restaurant">Ресторан</div>
+                <div class="location-restaurant-name">«Жамал»</div>
+
+                <div class="location-address-detail">
+                    Ресторан находится по адресу:<br />
+                    город Астана,<br />
+                    с. Кабанбай батыра
+                </div>
+
+                <a
+                    class="map-icon"
+                    href="https://2gis.kz/kz_akmola_oblast_rwop/geo/70000001087424400"
+                    target="_blank">
+                    <img src="./assets/imgs/2gis.png" alt="2GIS" />
+                </a>
+            </div>
+        </section>
+
+        <!-- 5. До свадьбы осталось -->
+        <section class="reveal-item">
+            <div class="container countdown-wrapper">
+                <div class="countdown-title">До қыз узуату осталось</div>
+
+                <div class="countdown" id="countdown">
+                    <div class="countdown-box">
+                        <div class="countdown-number" id="dd">00</div>
+                        <div class="countdown-label">Дней</div>
+                    </div>
+                    <div class="countdown-box">
+                        <div class="countdown-number" id="hh">00</div>
+                        <div class="countdown-label">Часов</div>
+                    </div>
+                    <div class="countdown-box">
+                        <div class="countdown-number" id="mm">00</div>
+                        <div class="countdown-label">Минут</div>
+                    </div>
+                    <div class="countdown-box">
+                        <div class="countdown-number" id="ss">00</div>
+                        <div class="countdown-label">Секунд</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. от кого приглашение -->
+        <section class="reveal-item">
+            <div class="container respect-block">
+                <div class="respect-title">С уважением,</div>
+
+                <div class="respect-names">Берик – Айман</div>
+
+                <img src="./assets/imgs/gold-line.svg" alt="gold-line" />
+            </div>
+        </section>
+
+        <!-- 7. подтвердите свое присутствие -->
+        <section class="reveal-item">
+            <div class="container confirmation-block">
+                <div>
+                    <div class="confirm-title">
+                        Подтвердите свое присутствие
+                    </div>
+                    <div class="confirm-sub">
+                        Нажмите, чтобы сообщить нам о своём участии.
+                    </div>
+                </div>
+
+                <div
+                    class="confirm-actions"
+                    role="group"
+                    aria-label="Подтверждение">
+                    <!-- Основная кнопка — WhatsApp (открывает чат) -->
+                    <a
+                        class="confirmation-button"
+                        href="https://wa.me/77789000829?text=Я%20приду%20на%20қыз%20узуату"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        <!-- Встроенный SVG иконки WhatsApp (не нужен внешний файл) -->
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true">
+                            <path
+                                d="M20.52 3.48A11.94 11.94 0 0012 0C5.373 0 .01 5.364.01 12a11.9 11.9 0 002.14 6.44L0 24l5.86-2.06A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12 0-3.2-1.25-6.17-3.48-8.52z"
+                                fill="rgba(255,255,255,0.06)"></path>
+                            <path
+                                d="M17.2 14.2c-.34-.17-2.01-.99-2.32-1.1-.31-.11-.55-.17-.78.17-.22.34-.85 1.1-1.04 1.33-.19.22-.38.25-.72.08-.34-.17-1.43-.53-2.72-1.67-1.01-.88-1.69-1.98-1.88-2.32-.19-.34-.02-.52.15-.69.16-.16.34-.41.51-.62.17-.22.22-.36.34-.61.11-.25.06-.46-.03-.63-.09-.17-.78-1.88-1.07-2.58-.28-.68-.56-.59-.78-.6l-.66-.01c-.21 0-.55.08-.84.38-.29.29-1.11 1.09-1.11 2.66 0 1.57 1.14 3.09 1.3 3.31.17.22 2.24 3.41 5.43 4.78 3.19 1.37 3.19.91 3.77.85.58-.07 1.89-.77 2.16-1.52.27-.75.27-1.39.19-1.52-.08-.13-.31-.21-.66-.38z"
+                                fill="#fff"></path>
+                        </svg>
+                        Написать в WhatsApp
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. Финальное сообщение -->
+        <section class="reveal-item">
+            <div class="container">
+                <img src="./assets/imgs/footer-image.webp" alt="footer-image" />
+            </div>
+        </section>
+
+        <script>
+            // ========== COUNTDOWN ==========
+            const target = new Date("2026-01-11T12:00:00").getTime();
+
+            function tick() {
+                const now = Date.now();
+                const diff = target - now;
+
+                if (diff <= 0) return;
+
+                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                const m = Math.floor((diff / (1000 * 60)) % 60);
+                const s = Math.floor((diff / 1000) % 60);
+
+                dd.textContent = String(d).padStart(2, "0");
+                hh.textContent = String(h).padStart(2, "0");
+                mm.textContent = String(m).padStart(2, "0");
+                ss.textContent = String(s).padStart(2, "0");
+            }
+
+            setInterval(tick, 1000);
+            tick();
+
+            // ===== HERO ANIMATION (GSAP) =====
+            window.addEventListener("load", () => {
+                gsap.from(".hero-title", { opacity: 0, y: 20, duration: 1 });
+                gsap.from(".hero-names", {
+                    opacity: 0,
+                    y: 20,
+                    duration: 1,
+                    delay: 0.2,
+                });
+                gsap.from(".hero-date", {
+                    opacity: 0,
+                    y: 20,
+                    duration: 1,
+                    delay: 0.4,
+                });
+            });
+
+            // === ПРОИГРЫВАНИЕ МУЗЫКИ С СЕРДЦЕМ ===
+            const audio = document.getElementById("weddingAudio");
+            const heartBtn = document.getElementById("heartBtn");
+            const heartIcon = document.getElementById("heartIcon");
+            const progress = document.getElementById("playerProgress");
+
+            audio.loop = true; // <-- ВАЖНО: зацикливаем воспроизведение
+
+            let isPlaying = false;
+
+            heartBtn.addEventListener("click", () => {
+                if (!isPlaying) {
+                    audio.play();
+                    heartBtn.classList.add("playing");
+                    heartIcon.textContent = "♥"; // черное сердце
+                } else {
+                    audio.pause();
+                    heartBtn.classList.remove("playing");
+                    heartIcon.textContent = "♡"; // пустое сердце
+                }
+                isPlaying = !isPlaying;
+            });
+
+            // обновление прогресс-бара
+            audio.addEventListener("timeupdate", () => {
+                const percent = (audio.currentTime / audio.duration) * 100;
+                progress.style.width = percent + "%";
+            });
+
+            // SCROLL REVEAL ANIMATIONS
+            const revealItems = document.querySelectorAll(".reveal-item");
+
+            const observer = new IntersectionObserver(
+                (entries, obs) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("reveal");
+                            obs.unobserve(entry.target); // анимация только один раз
+                        }
+                    });
+                },
+                { threshold: 0.1 }
+            );
+
+            revealItems.forEach((item) => observer.observe(item));
+        </script>
+    </body>
+</html>
