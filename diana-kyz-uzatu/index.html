@@ -679,7 +679,7 @@
             }
         </style>
     </head>
-    <audio id="weddingAudio" src="./assets/music/wedding2.mp3"></audio>
+    <audio id="weddingAudio" src="./assets/music/wedding.mpeg"></audio>
 
     <body>
         <!-- 1. HERO -->
@@ -874,7 +874,7 @@
                     <!-- Основная кнопка — WhatsApp (открывает чат) -->
                     <a
                         class="confirmation-button"
-                        href="https://wa.me/77752898221?text=Мен%20қыз%20ұзатуға%20келемін"
+                        href="https://wa.me/77010262412?text=Мен%20қыз%20ұзатуға%20келемін"
                         target="_blank"
                         rel="noopener noreferrer">
                         <!-- Встроенный SVG иконки WhatsApp (не нужен внешний файл) -->
@@ -953,9 +953,15 @@
             audio.loop = true; // <-- ВАЖНО: зацикливаем воспроизведение
 
             let isPlaying = false;
+            let hasStarted = false; // флаг для первого запуска
 
             heartBtn.addEventListener("click", () => {
                 if (!isPlaying) {
+                    // Если это первый запуск, устанавливаем время на 30 секунд
+                    if (!hasStarted) {
+                        audio.currentTime = 30; // начинаем с 0:30
+                        hasStarted = true;
+                    }
                     audio.play();
                     heartBtn.classList.add("playing");
                     heartIcon.textContent = "♥"; // черное сердце
@@ -967,10 +973,15 @@
                 isPlaying = !isPlaying;
             });
 
-            // обновление прогресс-бара
+            // обновление прогресс-бара и обработка зацикливания
             audio.addEventListener("timeupdate", () => {
                 const percent = (audio.currentTime / audio.duration) * 100;
                 progress.style.width = percent + "%";
+                
+                // Если трек закончился (приближается к концу), возвращаемся к 30 секундам
+                if (audio.currentTime >= audio.duration - 0.1 && audio.duration > 0) {
+                    audio.currentTime = 30;
+                }
             });
 
             // SCROLL REVEAL ANIMATIONS
