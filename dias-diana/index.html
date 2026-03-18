@@ -422,11 +422,12 @@
                 letter-spacing: 1px !important;
             }
 
-            /* Заголовок приглашения — читаемый шрифт для казахских букв */
+            /* Заголовок приглашения — читаемый шрифт для казахских букв, мелкий текст */
             .invite-heading {
                 font-family: "Montserrat", sans-serif;
                 font-weight: 500;
                 letter-spacing: 0.5px;
+                font-size: 18px;
             }
 
             /* ===== WEDDING MUSIC PLAYER ===== */
@@ -700,7 +701,7 @@
         <section class="hero">
             <div class="hero-overlay"></div>
             <div class="hero-content">
-                <div class="hero-title wedding-font">Той</div>
+                <div class="hero-title wedding-font">Үйлену тойы</div>
                 <div class="hero-names">Диас & Диана</div>
                 <div class="hero-date">13 / 06 / 2026</div>
 
@@ -732,9 +733,9 @@
         <section class="reveal-item">
             <div class="container invite-block">
                 <h2 class="invite-heading">
-                    ҚҰРМЕТТІ АҒАЙЫН-ТУЫС, БАУЫРЛАР, ҚҰДА-ЖЕКЖАТ, НАҒАШЫ-ЖИЕН,
-                    БӨЛЕЛЕР, ҚҰРБЫ-ҚҰРДАС, АПА-ЖЕЗДЕЛЕР, ДОС-ЖАРАНДАР,
-                    ӘРІПТЕСТЕР, КӨРШІЛЕР!
+                    Құрметті ағайын-туыс, бауырлар, құда-жекжат, нағашы-жиен,
+                    бөлелер, құрбы-құрдас, апа-жезделер, дос-жарандар,
+                    әріптестер, көршілер!
                 </h2>
 
                 <div class="subtext">
@@ -765,7 +766,7 @@
 
                     <div class="big-date-side">
                         <span class="line"></span>
-                        <span class="label">12:00</span>
+                        <span class="label">17:00</span>
                         <span class="line"></span>
                     </div>
                 </div>
@@ -921,13 +922,13 @@
         <!-- 8. Финальное сообщение -->
         <section class="reveal-item">
             <div class="container">
-                <div class="final-text">Сіздерді асыға күтеміз!</div>
+                <div class="final-text">Келіңіздер, қуанышымыздың қадірлі қонағы болыңыздар!</div>
             </div>
         </section>
 
         <script>
             // ========== COUNTDOWN ==========
-            const target = new Date("2026-06-13T12:00:00").getTime();
+            const target = new Date("2026-06-13T17:00:00").getTime();
 
             function tick() {
                 const now = Date.now();
@@ -978,6 +979,7 @@
 
             heartBtn.addEventListener("click", () => {
                 if (!isPlaying) {
+                    audio.currentTime = 44;
                     audio.play();
                     heartBtn.classList.add("playing");
                     heartIcon.textContent = "♥"; // черное сердце
